@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/cat_game_row_recycler"
+        android:id="@+id/category_game_tiles_recycler"
         android:layout_width="match_parent"
         android:layout_height="205dp"
         android:layout_marginTop="8dp"

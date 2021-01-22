@@ -10,49 +10,48 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.mistplaychallenge.R
 import com.example.mistplaychallenge.models.Category
 import com.example.mistplaychallenge.models.CategoryGameTile
-import java.util.*
 
 class CategoryRecyclerAdapter(
     private val context: Context,
     private val categories: List<Category>)
-    : RecyclerView.Adapter< CategoryRecyclerAdapter.CategoryViewholder > ()
+    : RecyclerView.Adapter< CategoryRecyclerAdapter.CategoryViewHolder > ()
 {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewholder {
-        return CategoryViewholder( LayoutInflater
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
+        return CategoryViewHolder( LayoutInflater
                 .from(context)
-                .inflate(R.layout.cat_game_row,parent,false)
+                .inflate(R.layout.cat_game_tiles,parent,false)
         )
     }
 
-    override fun onBindViewHolder(holder: CategoryViewholder, position: Int) {
+    override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
         holder.bindCategoryTitle(categories.get(position).list_title)
-        setGameRowRecycler(holder.getTilesRecycler(),categories.get(position).games)
+        setGameTilesRecycler(holder.getTilesRecycler(),categories.get(position).games)
     }
 
     override fun getItemCount(): Int {
         return categories.size
     }
 
-    private fun setGameRowRecycler(recyclerView: RecyclerView,gameTiles: List<CategoryGameTile>){
-        val tileRecyclerAdapter = GameRowRecyclerAdapter(context, gameTiles)
+    private fun setGameTilesRecycler(recyclerView: RecyclerView, gameTiles: List<CategoryGameTile>){
+        val tileRecyclerAdapter = GameTilesRecyclerAdapter(context, gameTiles)
         recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL,false)
         recyclerView.adapter=tileRecyclerAdapter
     }
 
 
-    class CategoryViewholder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    class CategoryViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         private var categoryTitle: TextView ?= null
-        private var gameRow : RecyclerView ?= null
+        private var gameTilesRecycler : RecyclerView ?= null
         init {
             categoryTitle = itemView.findViewById(R.id.category_title_textview)
-            gameRow = itemView.findViewById(R.id.cat_game_row_recycler)
+            gameTilesRecycler = itemView.findViewById(R.id.category_game_tiles_recycler)
         }
 
         fun bindCategoryTitle(title:String){
             categoryTitle!!.text=title;
         }
         fun getTilesRecycler():RecyclerView{
-            return gameRow!!
+            return gameTilesRecycler!!
         }
     }
 }

@@ -11,19 +11,20 @@ import com.bumptech.glide.Glide
 import com.example.mistplaychallenge.R
 import com.example.mistplaychallenge.models.CategoryGameTile
 
-class GameRowRecyclerAdapter(
+class GameTilesRecyclerAdapter(
         private val context: Context,
         private val gameTiles: List<CategoryGameTile>)
-    :RecyclerView.Adapter< GameRowRecyclerAdapter.GameRowViewHolder >()
+    :RecyclerView.Adapter< GameTilesRecyclerAdapter.GameTileViewHolder >()
 {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameRowViewHolder {
-        return GameRowViewHolder( LayoutInflater
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameTileViewHolder {
+        return GameTileViewHolder( LayoutInflater
                 .from(context)
                 .inflate(R.layout.game_tile_card,parent,false)
         )
     }
 
-    override fun onBindViewHolder(holder: GameRowViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: GameTileViewHolder, position: Int) {
         holder.bindPhoto(gameTiles.get(position).img)
         holder.bindGameTitle(gameTiles.get(position).title)
     }
@@ -33,7 +34,7 @@ class GameRowRecyclerAdapter(
     }
 
 
-    class GameRowViewHolder(itemView: View):RecyclerView.ViewHolder(itemView) {
+    class GameTileViewHolder(itemView: View):RecyclerView.ViewHolder(itemView) {
         private var gameImage: ImageView? = null
         private var gameTitle: TextView? = null
         init {
