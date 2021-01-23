@@ -5,6 +5,10 @@ import android.util.Log
 import java.io.IOException
 
 class Utils {
+    /**
+     * Returns json string for the filename specified,
+     * file should be placed in assets folder.
+     */
     fun getJsonFromAsset(context: Context, filename: String): String? {
         var jsonString: String ?=null
         try{

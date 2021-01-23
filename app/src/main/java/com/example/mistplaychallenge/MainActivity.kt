@@ -21,6 +21,12 @@ class MainActivity : AppCompatActivity() {
         setGameCategoryRecycler()
     }
 
+
+    /**
+     * Reads json file of game info,
+     * parses into List of Category model objects
+     * and initializes vertical/game category recycler view
+     */
     private fun setGameCategoryRecycler(){
         val gson = Gson()
         val utils = Utils()
@@ -31,8 +37,8 @@ class MainActivity : AppCompatActivity() {
         val categories: List<Category> = gson.fromJson(jsonStr, toType)
         val layoutManager : RecyclerView.LayoutManager = LinearLayoutManager(this)
 
-        gameCategoryRecyclerView = findViewById(R.id.game_category_recycler)
         gameCategoryRecyclerAdapter = CategoryRecyclerAdapter(applicationContext,categories)
+        gameCategoryRecyclerView = findViewById(R.id.game_category_recycler)
         gameCategoryRecyclerView!!.layoutManager = layoutManager
         gameCategoryRecyclerView!!.adapter = gameCategoryRecyclerAdapter
     }
