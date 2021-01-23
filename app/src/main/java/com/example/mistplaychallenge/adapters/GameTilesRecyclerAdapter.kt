@@ -57,7 +57,6 @@ class GameTilesRecyclerAdapter(
         fun bindImage( imageUrl: String ){
             Glide.with( itemView )
                     .load( imageUrl )
-                    .placeholder( R.drawable.ic_launcher_background )
                     .into( gameImage!! )
         }
 
